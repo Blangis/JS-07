@@ -21,9 +21,49 @@ const fetchPokemon = async (pokemon) => {
     } catch (err) {
         console.error(err);
     }
-}
+};
 
-// Crear secciones
+const createPokemonCard = (pokemon) => {
+    const pokemonCard = document.createElement('div');
+    pokemonCard.classList.add('pokemon-card');
+
+    const pokemonName = document.createElement('h2');
+    pokemonName.textContent = pokemon.name;
+
+    const pokemonImage = document.createElement('img');
+    pokemonImage.src = pokemon.sprites.front_default;
+
+    pokemonCard.appendChild(pokemonName);
+    pokemonCard.appendChild(pokemonImage);
+    
+
+    document.getElementById('pokemon-container').innerHTML = '';
+    document.getElementById('pokemon-container').appendChild(pokemonCard);
+
+};
+
+
+/*
+const createPokemonCard = (pokemon) => {
+    const pokemonCard = document.createElement('div');
+    pokemonCard.classList.add('pokemon-card');
+
+    const pokemonName = document.createElement('h2');
+    pokemonName.textContent = pokemon.name;
+
+    const pokemonImage = document.createElement('img');
+    pokemonImage.src = pokemon.sprites.front_default; //ruta en json
+
+    pokemonCard.appendChild(pokemonName);
+    pokemonCard.appendChild(pokemonImage);
+    
+
+    document.getElementById('pokemon-container').innerHTML = '';
+    document.getElementById('pokemon-container').appendChild(pokemonCard);
+
+};
+
+/*
 function createPokemonCard(){
     const cardObj = {
         namePokemon : document.createElement("h2"),
@@ -33,7 +73,10 @@ function createPokemonCard(){
 
 }
 // Imagen pikachu: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
-// Obtener pokemon
+// Obtener pokemon 
+*/
+
+
 document.getElementById('get-btn')
     .addEventListener('click', async () => {
         const text = document.getElementById('poke-name').value.toLowerCase();
